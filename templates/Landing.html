@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sample Landing Page</title>
+  <link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style.css') }}"
+/>
+</head>
+
+<body>
+  <div class="main">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo"><img src="Logo2.ico" alt="logo" class="logo"></a>
+        <div class="nav-toggle">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </div>
+        <div class="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="Index.html" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="Mission.html" class="nav-link">HISTORY</a>
+            </li>
+            <li class="nav-item">
+              <a href="AboutUs.html" class="nav-link">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="nav-link">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="conati">
+      <h1>My Requests</h1>
+
+      <p>No Requests</p>
+
+      <div>
+        <div class="table">
+          <div class="table-header">
+            <div class="header__item">
+              <a id="name" class="filter__link" href="#">Name</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#">Location</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#">Quantity</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#">Contact</a>
+            </div>
+          </div>
+          <div class="table-content">
+
+            {% for row in requestlist %}
+            <div class="table-row">
+              <div class="table-data">{{row[1]}}</div>
+              <div class="table-data">{{row[2]}}</div>
+              <div class="table-data">{{row[3]}}</div>
+              <div class="table-data">{{row[4]}}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="btn-left">
+        <div class="signform-btn">
+          <button class="signform-submit-btn-green">
+            <a  href="{{ url_for('.createRequest', _anchor='exactlocation') }}">CREATE A REQUEST</a>
+          </button>
+        </div>
+      </div>
+      <div class="alink">
+        <a href="{{ url_for('.Requestlist', _anchor='exactlocation') }}">See all Requests</a>
+      </div>
+    </div>
+
+    <div class="conati">
+      <h1>My Donations</h1>
+      <p>No Donations</p>
+      
+      <div>
+        <div class="table">
+          <div class="table-header">
+            <div class="header__item">
+              <a id="name" class="filter__link" href="#">Name</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#">Location</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#">Quantity</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#">Contact</a>
+            </div>
+          </div>
+          <div class="table-content">
+
+            {% for row in donationlist %}
+            <div class="table-row">
+              <div class="table-data">{{row[1]}}</div>
+              <div class="table-data">{{row[2]}}</div>
+              <div class="table-data">{{row[3]}}</div>
+              <div class="table-data">{{row[4]}}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-left">
+        <div class="signform-btn">
+          <button class="signform-submit-btn-green">
+            <a  href="{{ url_for('.createDonation', _anchor='exactlocation') }}">MAKE DONATION</a>
+          </button>
+        </div>
+      </div>
+      <div class="alink">
+        <a  href="{{ url_for('.Donationlist', _anchor='exactlocation') }}">See all Donations</a>
+        <div>
+        </div>
+      </div>
+</body>
+
+</html>

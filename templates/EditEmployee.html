@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .form-container {
+        width: 90%;
+        margin: 20px auto;
+      }
+      .form-input {
+        width: 80%;
+        height: 30px;
+        margin: 10px 0;
+      }
+      .form-submit {
+        width: 40%;
+        height: 30px;
+        background-color: #000;
+        color: white;
+        font-weight: bold;
+      }
+      .close-popup {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        background-color: #4caf50;
+        color: #fff;
+        border-radius: 4px;
+        border: none;
+        transition: background-color 0.3s ease;
+        margin-left: 50%;
+      }
+
+      .close-popup:hover {
+        background-color: #3e8e41;
+      }
+
+      @media (max-width: 768px) {
+        .close-popup {
+          font-size: 14px;
+          padding: 10px 20px;
+        }
+      }
+
+      .popup {
+        height: 50%;
+        width: 80%;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: whitesmoke;
+        border: 1px solid black;
+        border-radius: 10px;
+      }
+
+      .popup h2 {
+        margin-top: 5%;
+        margin-left: 25%;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="open-popup">Click me to open popup</button>
+    <div class="popup">
+      <div class="form-container">
+        <form action="/action" method="post">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-input"
+            name="name"
+            placeholder="Enter your name"
+          />
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-input"
+            name="email"
+            placeholder="Enter your email"
+          />
+          <label for="message">Message</label>
+          <input
+            type="text"
+            class="form-input"
+            name="message"
+            placeholder="Enter your message"
+          />
+          <label for="status">status</label>
+          <input
+            type="text"
+            class="form-input"
+            name="message"
+            placeholder="Enter your message"
+          />
+        </form>
+        <button class="form-submit" id="form-submit">Cancel</button>
+        <button class="form-submit" class="form-submit">Save</button>
+      </div>
+    </div>
+  </body>
+
+  <script
+    type="text/javascript"
+    src="https://code.jquery.com/jquery-1.7.1.min.js"
+  ></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#main-content").before(
+        '<div id="loading-spinner"><span class="spinner"></span></div>'
+      );
+
+      // Show the loading spinner when an Ajax request starts
+      $(document).ajaxStart(function () {
+        $("#loading-spinner span").addClass("active");
+      });
+
+      // Hide the loading spinner when an Ajax request completes
+      $(document).ajaxStop(function () {
+        $("#loading-spinner span").removeClass("active");
+      });
+      // open popup when button is clicked
+      $(".open-popup").click(function () {
+        $(".popup").fadeIn();
+      });
+
+      // close popup when close button is clicked
+      $(".close-popup").click(function () {
+        $(".popup").fadeOut();
+      });
+
+      // close popup when close button is clicked
+      $("#form-submit").click(function () {
+        $(".popup").fadeOut();
+      });
+    });
+  </script>
+</html>

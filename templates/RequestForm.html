@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FooDo</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body class="body-ls">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo"
+          ><img src="Logo2.ico" alt="logo" class="logo"
+        /></a>
+        <div class="nav-toggle">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </div>
+        <div class="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="Index.html" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="Mission.html" class="nav-link">MISSION</a>
+            </li>
+            <li class="nav-item">
+              <a href="AboutUs.html" class="nav-link">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="nav-link">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <form action="/createRequest" method="POST">
+      <div class="sign-container">
+        <div class="signform">
+          <h2 class="signform-heading">Make a Request</h2>
+          <div class="signform-group">
+            <label for="username">Name</label>
+            <input type="text" id="username" name="name" required />
+          </div>
+          <div class="signform-group">
+            <label for="email">quantity</label>
+            <input type="text" id="quantity" name="quantity" required />
+          </div>
+          <div class="signform-group">
+            <label for="password">location</label>
+            <input type="text" id="location" name="location" required />
+          </div>
+          <div class="signform-group">
+            <label for="confirm-password">Contact</label>
+            <input type="text" id="Contact" name="contact" required />
+          </div>
+
+          <div class="popup">
+            <h2>Request submitted successfully!</h2>
+            <button id="close-popup" class="signform-submit-btn-green">
+              Ok
+            </button>
+          </div>
+
+          <div class="signform-btn">
+            <button class="signform-submit-btn">
+              <a href="Landing.html">Cancel</a>
+            </button>
+            <button
+              class="signform-submit-btn-green"
+              id="signform-submit-btn-green"
+              type="submit"
+            >
+              Request
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
+
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-1.7.1.min.js"
+></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    // open popup when button is clicked
+    $("#signform-submit-btn-green").click(function () {
+      // $("#main").animate({ opacity: 0 }, 2000);
+      $(".popup").show();
+    });
+
+    // close popup when close button is clicked
+    $("#close-popup").click(function () {
+      $(".popup").hide();
+    });
+  });
+</script>

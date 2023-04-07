@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FooDo</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="main">
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href="#" class="nav-logo"
+            ><img
+              href="{{ url_for('static', filename='images/Logo2.ico') }}"
+              alt="logo"
+              class="logo"
+          /></a>
+          <div class="nav-toggle">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+          </div>
+          <div class="nav-menu">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="Index.html" class="nav-link">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a href="Mission.html" class="nav-link">MISSION</a>
+              </li>
+              <li class="nav-item">
+                <a href="AboutUs.html" class="nav-link">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a href="Contact.html" class="nav-link">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="info">
+          <h1>
+            GIVE FOOD & <br />
+            FILL HAPPINESS
+          </h1>
+          <p>
+            Lets join our hands together to donate food by helping the need
+            instead of throwing in trash. Service to human is service to god.
+          </p>
+          <p>
+            There's Enough on this planet for Everyone's Needs but not for
+            Everyone's Greed -<i>MAHATMA GANDHI</i>
+          </p>
+        </div>
+
+        <div class="form">
+          <h2>Login into FooDo</h2>
+          <div class="label-box">
+            <span class="label-text">{{msg}}</span>
+          </div>
+          <span id="error-message" class="error-message"
+            >Enter Valid Credentials</span
+          >
+          <form action="/login" method="POST" enctype="multipart/form-data">
+            <input type="email" name="email" placeholder="EMAIL" id="email" />
+            <input
+              type="password"
+              name="password"
+              placeholder="PASSWORD"
+              id="password"
+            />
+            <button class="btn" id="login" type="submit">Login</button>
+          </form>
+          <p class="link">
+            Don't have an account?<a
+              href="{{ url_for('.Signup', _anchor='exactlocation') }}"
+              >Sign up here</a
+            >
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; Foodo - Designed in the interest of public 2023</p>
+    </footer>
+  </body>
+</html>
+
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-1.7.1.min.js"
+></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#error-message").hide();
+    debugger;
+    $("#email").blur(function () {
+      var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      var email = $(this).val();
+      if (!emailRegex.test(email)) {
+        alert("Invalid email format");
+        return false;
+      }
+    });
+
+    $("#login").click(function () {
+      if (!tester()) return false;
+      if ($("#email").val() == "" || $("#password").val() == "") {
+        $("#error-message").show();
+        return false;
+      } else return true;
+    });
+
+    function tester() {
+      var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      var email = $("#email").val();
+      if (!emailRegex.test(email)) {
+        alert("Invalid email format");
+        return false;
+      }
+      return true;
+    }
+  });
+</script>

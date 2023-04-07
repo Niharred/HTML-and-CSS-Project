@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FooDo</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body class="body-ls">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo"
+          ><img src="Logo2.ico" alt="logo" class="logo"
+        /></a>
+        <div class="nav-toggle">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </div>
+        <div class="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="Index.html" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="Mission.html" class="nav-link">MISSION</a>
+            </li>
+            <li class="nav-item">
+              <a href="AboutUs.html" class="nav-link">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="nav-link">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sign-container">
+      <div class="signform">
+        <h2 class="signform-heading">Join our Community!</h2>
+        <span id="error-message" class="error-message">Enter all details</span>
+        <form action="/createUser" method="POST" enctype="multipart/form-data">
+          <div class="signform-group">
+            <label for="username">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="signform-group">
+            <label for="mobile-number">Mobile number</label>
+            <input type="text" id="mobilenumber" name="mobilenumber" required />
+          </div>
+          <div class="signform-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="signform-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="signform-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+            />
+          </div>
+          <div class="signform-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+              <option value=""></option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="signform-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required />
+          </div>
+
+          <div class="signform-btn">
+            <br /><button type="submit" class="signform-submit-btn">
+              <a href="Index.html">Cancel</a>
+            </button>
+            <button type="submit" class="signform-submit-btn-green" id="join">
+              Join
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div></div>
+  </body>
+</html>
+
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-1.7.1.min.js"
+></script>
+<script type="text/javascript"></script>

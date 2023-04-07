@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>FooDo</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <div>
+    <body>
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href="#" class="nav-logo"
+            ><img src="Logo2.ico" alt="logo" class="logo"
+          /></a>
+          <div class="nav-toggle">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+          </div>
+          <div class="nav-menu">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="Index.html" class="nav-link">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a href="Mission.html" class="nav-link">MISSION</a>
+              </li>
+              <li class="nav-item">
+                <a href="AboutUs.html" class="nav-link">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a href="Contact.html" class="nav-link">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <div class="table">
+          <div class="table-header">
+            <div class="header__item">
+              <a id="name" class="filter__link" href="#">Name</a>
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#"
+                >address</a
+              >
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#"
+                >Contact</a
+              >
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#"
+                >Date</a
+              >
+            </div>
+            <div class="header__item">
+              <a id="wins" class="filter__link filter__link--number" href="#"
+                >Request status</a
+              >
+            </div>
+          </div>
+          <div class="popup">
+            <h2>Request submitted successfully!</h2>
+            <button id="close-popup" class="signform-submit-btn-green">
+              Ok
+            </button>
+          </div>
+          <div class="table-content">
+            {% for row in requestlist %}
+            <div class="table-row">
+              <div class="table-data">{{row[1]}}</div>
+              <div class="table-data">{{row[2]}}</div>
+              <div class="table-data">{{row[3]}}</div>
+              <div class="table-data">{{row[4]}}</div>
+              <div class="table-data">
+                <div class="signform-btn">
+                  <button
+                    class="signform-submit-btn-green"
+                    id="signform-submit-btn-green"
+                    type="submit"
+                    value="{{row[0]}}"
+                  >
+                    ACCEPT REQUEST
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </body>
+  </div>
+</html>
+
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-1.7.1.min.js"
+></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    debugger;
+    var idt = "";
+    // open popup when button is clicked
+    $("#signform-submit-btn-green").click(function () {
+      idt = $(this).val();
+      // $("#main").animate({ opacity: 0 }, 2000);
+      $(".popup").show();
+    });
+
+    // close popup when close button is clicked
+    $("#close-popup").click(function () {
+      $.ajax({
+        url: "/acceptRequest",
+        type: "POST",
+        data: JSON.stringify({ id: idt }),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (response) {
+          location.reload(true);
+          console.log("Success:", response);
+        },
+        error: function (error) {
+          console.log("Error:", error);
+        },
+      });
+
+      $(".popup").hide();
+    });
+  });
+</script>

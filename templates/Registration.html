@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      .form-header {
+        background-color: #333;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .form-body {
+        padding: 20px;
+      }
+
+      .form-label {
+        font-weight: bold;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-submit {
+        background-color: #444;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .form-submit:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-header">Registration Form</div>
+      <div class="form-body">
+        <form action="{{ url_for('addrec') }}" method="POST">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="form-control"
+          />
+          <label for="add">Address</label>
+          <input type="add" name="addr" id="add" class="form-control" />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" class="form-control" />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="form-control"
+          />
+          <button type="submit" class="form-submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
